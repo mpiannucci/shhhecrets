@@ -1,5 +1,4 @@
 *.sublime-workspace
-theos
 
 *.deb
 .theos/
