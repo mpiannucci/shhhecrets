@@ -1,2 +1,7 @@
 *.sublime-workspace
 theos
+
+*.deb
+.theos/
+obj/
+_/
