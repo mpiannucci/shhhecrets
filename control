@@ -1,0 +1,9 @@
+Package: com.mpiannucci.shhhecrets
+Name: shhhecrets
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Matthew Iannucci
+Author: Matthew Iannucci
+Section: Tweaks
