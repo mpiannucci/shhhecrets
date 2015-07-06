@@ -1,1 +1,2 @@
-theos/
+*.sublime-workspace
+theos
