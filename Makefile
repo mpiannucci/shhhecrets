@@ -4,7 +4,7 @@ include theos/makefiles/common.mk
 
 TWEAK_NAME = shhhecrets
 shhhecrets_FILES = Tweak.xm
-shhhecrets_FRAMEWORKS = UIKit
+shhhecrets_FRAMEWORKS = LocalAuthentication
 
 include $(THEOS_MAKE_PATH)/tweak.mk
 
