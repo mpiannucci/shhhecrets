@@ -1,4 +1,5 @@
 #import <LocalAuthentication/LAContext.h>
+//#import "passwordprompt.h"
 #import <UIKit/UIKit.h>
 
 %hook CKConversationListController
@@ -28,15 +29,8 @@ static BOOL editMode = NO;
                 }
             }];
         } else {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Shhhecrets"
-                                        message:@"This is a test"
-                                        preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-            handler:^(UIAlertAction *action) {
-                %orig;
-            }];
-            [alert addAction:defaultAction];
-            [self presentViewController:alert animated:YES completion:nil];
+            // PasswordPrompt *prompt = [[PasswordPrompt alloc] init];
+            // [prompt show];
         }
     } else {
         %orig;
