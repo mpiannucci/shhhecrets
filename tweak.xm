@@ -28,7 +28,24 @@ static BOOL editMode = NO;
                 }
             }];
         } else {
-            %orig;
+            UIAlertController *loginController = [UIAlertController alertControllerWithTitle:@"View Conversation"
+                                                  message:@"This conversation is locked: Enter password to view it."
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+            [loginController addTextFieldWithConfigurationHandler:^(UITextField *textField)
+            {
+                textField.placeholder = NSLocalizedString(@"PasswordPlaceholder", @"Password");
+                textField.secureTextEntry = YES;
+            }];
+
+            // UIAlertAction *okAction = [UIAlertAction
+            //                            actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+            //                            style:UIAlertActionStyleDefault
+            //                            handler:^(UIAlertAction *action)
+            // {
+            //     UITextField *password = loginController.textFields.firstObject;
+            // }];
+
+            [self presentViewController:loginController animated:YES completion:nil];
         }
     } else {
         %orig;
