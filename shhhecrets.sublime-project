@@ -3,6 +3,7 @@
 	[
 		{
 			"path": ".",
+            "file_exclude_patterns": ["*.deb"],
             "folder_exclude_patterns": [".theos", "_", "obj", "theos"],
 		}
 	]

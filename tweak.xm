@@ -1,5 +1,4 @@
 #import <LocalAuthentication/LAContext.h>
-//#import "passwordprompt.h"
 #import <UIKit/UIKit.h>
 
 %hook CKConversationListController
@@ -29,8 +28,7 @@ static BOOL editMode = NO;
                 }
             }];
         } else {
-            // PasswordPrompt *prompt = [[PasswordPrompt alloc] init];
-            // [prompt show];
+            %orig;
         }
     } else {
         %orig;
