@@ -1,0 +1,10 @@
+{
+    entry = {
+	bundle = shhhecretssettings;
+	cell = PSLinkCell;
+	detail = shhhecretssettingsListController;
+	icon = shhhecretssettings.png;
+	isController = 1;
+	label = shhhecretssettings;
+    };
+}

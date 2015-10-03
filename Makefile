@@ -7,3 +7,5 @@ shhhecrets_FILES = tweak.xm
 shhhecrets_FRAMEWORKS = UIKit LocalAuthentication
 
 include $(THEOS_MAKE_PATH)/tweak.mk
+SUBPROJECTS += shhhecretssettings
+include $(THEOS_MAKE_PATH)/aggregate.mk
