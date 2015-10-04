@@ -40,6 +40,7 @@ static BOOL firstSelect = NO;
         NSError *authError = nil;
         NSString *myLocalizedReasonString = @"This conversation is private and requires authentication";
 
+        // For now, always show touch id if it is available on the device.
         if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
             [myContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
              localizedReason:myLocalizedReasonString
@@ -51,15 +52,19 @@ static BOOL firstSelect = NO;
                 }
             }];
         } else {
+            // Create a new dialog so we can prompt for a password
             UIAlertController *loginController = [UIAlertController alertControllerWithTitle:@"View Conversation"
                                                   message:@"This conversation is locked: Enter password to view it."
                                                   preferredStyle:UIAlertControllerStyleAlert];
+
+            // Add a text field for the password
             [loginController addTextFieldWithConfigurationHandler:^(UITextField *textField)
             {
                 textField.placeholder = NSLocalizedString(@"Password", @"Password");
                 textField.secureTextEntry = YES;
             }];
 
+            // Set up the Ok action
             UIAlertAction *okAction = [UIAlertAction
                                        actionWithTitle:NSLocalizedString(@"OK", @"OK action")
                                        style:UIAlertActionStyleDefault
@@ -68,13 +73,17 @@ static BOOL firstSelect = NO;
                 UITextField *password = loginController.textFields.firstObject;
                 if ([password.text isEqualToString:[defaults objectForKey:conversationID]]) {
                     %orig;
+                } else {
+                    // Deselect the table view cell
+                    [table deselectRowAtIndexPath:indexPath animated:YES];
                 }
             }];
             [loginController addAction:okAction];
 
+            // Set up the cancel action
             UIAlertAction *cancelAction = [UIAlertAction
                                            actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
-                                           style:UIAlertActionStyleDefault
+                                           style:UIAlertActionStyleCancel
                                            handler:^(UIAlertAction *action)
             {
                 // Deselect the table view cell
